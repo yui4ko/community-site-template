@@ -37,7 +37,7 @@ const formatDateForInput = (date?: Date | string) => {
     try {
         // Convert UTC -> Local Time string for input
         return format(new Date(date), "yyyy-MM-dd'T'HH:mm");
-    } catch (e) { return ''; }
+    } catch { return ''; }
 };
 
 export default function EventForm({ action, initialData }: { action: (state: ActionState, formData: FormData) => Promise<ActionState>, initialData?: any }) {
@@ -52,7 +52,7 @@ export default function EventForm({ action, initialData }: { action: (state: Act
             try {
                 const parsed = JSON.parse(state.payload.photosJson);
                 if (Array.isArray(parsed)) setPhotos(parsed);
-            } catch (e) { }
+            } catch { }
         } else if (initialData?.photos && Array.isArray(initialData.photos)) {
             setPhotos(initialData.photos);
         }

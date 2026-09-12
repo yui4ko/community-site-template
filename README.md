@@ -337,8 +337,27 @@ Visit `http://localhost:3000` — the site will hot-reload as you make changes.
 | `npm run build` | Build for production |
 | `npm run start` | Start production server |
 | `npm run seed` | Seed sample data into the database |
+| `npm run typecheck` | Type-check without emitting (`tsc --noEmit`) |
+| `npm run lint` | Lint the project |
 | `npx prisma studio` | Open database GUI browser |
 | `npx prisma db push` | Apply schema changes to database |
+
+### ✅ Continuous Integration
+
+`.github/workflows/ci.yml` runs on every pull request and push to `main`:
+type-check, lint, `next build`, and a Docker build of the deployable image.
+
+Run the first two before you push:
+
+```bash
+npm run typecheck && npm run lint
+```
+
+Note that `next.config.ts` intentionally sets `ignoreBuildErrors` and
+`ignoreDuringBuilds`, so that a type or lint error can never block a deploy in
+an emergency. The trade-off is that a successful build proves very little — the
+type-check and lint steps are the real gate. `no-explicit-any` is a warning
+rather than an error; everything else is an error and the tree is clean.
 
 ---
 

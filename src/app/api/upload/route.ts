@@ -3,7 +3,6 @@ import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '@/auth';
-import { prisma } from '@/lib/prisma';
 
 export async function GET() {
     return NextResponse.json({
@@ -52,8 +51,8 @@ export async function POST(request: Request) {
 
         try {
             await mkdir(uploadDir, { recursive: true });
-        } catch (err) {
-            // Folder exists
+        } catch {
+            // Folder already exists
         }
 
         // Generate unique filename

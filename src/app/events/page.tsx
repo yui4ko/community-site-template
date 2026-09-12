@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { format, addDays } from "date-fns";
+import { addDays } from "date-fns";
 import { Metadata } from "next";
 import { Event } from "@prisma/client";
 import ImageWithFallback from "@/components/ImageWithFallback";
@@ -42,7 +42,6 @@ export default async function EventsPage() {
 
     // Filter filtering hidden events from the list view
     const visibleUpcomingEvents = upcomingEvents.filter(e => {
-        // @ts-ignore - property exists on runtime model but Typescript might not know yet until generation
         return e.showInList !== false;
     });
 
@@ -104,8 +103,8 @@ export default async function EventsPage() {
                         <div>
                             <h4 className="font-bold text-brand text-sm">How to Subscribe?</h4>
                             <p className="text-sm text-blue-800 mt-1">
-                                <strong>Mobile:</strong> Tap "Download ICS" to add to Apple Calendar or Android Calendar.<br />
-                                <strong>Desktop:</strong> Click "Subscribe (Google)" to add to your Google Calendar, or download the ICS file to import into Outlook.
+                                <strong>Mobile:</strong> Tap &ldquo;Download ICS&rdquo; to add to Apple Calendar or Android Calendar.<br />
+                                <strong>Desktop:</strong> Click &ldquo;Subscribe (Google)&rdquo; to add to your Google Calendar, or download the ICS file to import into Outlook.
                             </p>
                         </div>
                     </div>

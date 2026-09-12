@@ -5,7 +5,8 @@ import { deleteNews } from '@/actions/news';
 
 export default function DeleteNewsButton({ id }: { id: string }) {
     return (
-        // @ts-ignore
+        // @ts-expect-error - the action returns { error } on failure, which React's
+        // form action type does not allow; the return value is unused here.
         <form action={deleteNews.bind(null, id)} className="inline-block">
             <button
                 type="submit"

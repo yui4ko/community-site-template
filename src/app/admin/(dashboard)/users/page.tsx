@@ -1,11 +1,10 @@
-import { getUsers, updateUserRole, deleteUser } from "@/actions/admin-users";
+import { getUsers } from "@/actions/admin-users";
 import { format } from "date-fns";
 import {
     UserIcon,
     ShieldCheckIcon,
     IdentificationIcon,
     GlobeAltIcon,
-    TrashIcon
 } from "@heroicons/react/24/outline";
 
 export default async function AdminUsersPage() {

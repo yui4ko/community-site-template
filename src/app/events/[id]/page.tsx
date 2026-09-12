@@ -5,7 +5,7 @@ import ImageWithFallback from '@/components/ImageWithFallback';
 import PhotoGallery from '@/components/PhotoGallery';
 import TimeDisplay from '@/components/TimeDisplay';
 import { notFound } from 'next/navigation';
-import { format, addMinutes, addDays } from 'date-fns';
+import { addMinutes, addDays } from 'date-fns';
 import { Metadata } from 'next';
 import JoinMeetingButton from '@/components/JoinMeetingButton';
 import ShareButtons from '@/components/ShareButtons';

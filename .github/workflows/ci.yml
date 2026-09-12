@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A newer push to the same branch makes the older run irrelevant.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Typecheck, lint, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      # next.config.ts sets ignoreBuildErrors / ignoreDuringBuilds so that a
+      # deploy is never blocked by a type or lint error. That means `next build`
+      # alone proves very little — these two steps are the real check.
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx next lint
+
+      - name: Build
+        run: npx next build
+        env:
+          # The build prerenders pages that touch Prisma; it only needs the
+          # variable to be present and syntactically valid, not a real database.
+          DATABASE_URL: file:./ci.db
+
+  docker:
+    name: Docker image builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # This is what actually ships, so build it the same way a server would.
+      - name: Build image
+        run: docker build -t site-template-ci .

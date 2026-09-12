@@ -47,9 +47,8 @@ export default function CalendarView({ events }: { events: Event[] }) {
 
             {/* Calendar Grid */}
             <div className="grid grid-cols-7 auto-rows-fr bg-gray-200 gap-px border-b border-gray-200">
-                {days.map((day, dayIdx) => {
+                {days.map((day) => {
                     const dayEvents = events.filter(e => isSameDay(new Date(e.date), day));
-                    const hasEvents = dayEvents.length > 0;
                     const isSelectedMonth = isSameMonth(day, monthStart);
 
                     return (

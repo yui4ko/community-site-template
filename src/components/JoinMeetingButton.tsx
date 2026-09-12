@@ -1,15 +1,13 @@
 
 'use client';
 
-import { addMinutes } from 'date-fns';
-
 interface JoinMeetingButtonProps {
     meetingUrl?: string | null;
     eventDate: Date;
     showJoinButton: boolean;
 }
 
-export default function JoinMeetingButton({ meetingUrl, eventDate, showJoinButton }: JoinMeetingButtonProps) {
+export default function JoinMeetingButton({ meetingUrl, showJoinButton }: JoinMeetingButtonProps) {
     // We could also do client-side calculation here to auto-enable without refresh
     // But for now, we'll stick to the passed prop for consistency with server render
 

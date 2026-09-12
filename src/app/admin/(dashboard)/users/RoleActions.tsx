@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { updateUserRole, deleteUser } from "@/actions/admin-users";
 import {
-    EllipsisHorizontalIcon,
 } from "@heroicons/react/24/outline";
 
 type Props = {
