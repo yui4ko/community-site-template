@@ -1,0 +1,180 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Event types: tech_talk, get_together, other
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @default("")
+  abstract    String?  // For tech talks
+  date        DateTime
+  type          String   @default("tech_talk") // tech_talk, get_together, other
+  status        String   @default("upcoming") // upcoming, past
+  deliveryMethod String  @default("online")    // online, onsite, hybrid
+  showInList    Boolean  @default(true)        // Whether to show in the cards list
+  
+  // Speaker information (for tech talks)
+  speaker        String?
+  speakerTitle   String? // e.g. "Cybersecurity leader"
+  speakerBio     String?
+  speakerPhotoUrl String?
+  
+  // Media
+  bannerImageUrl String?
+  slidesUrl      String?
+  recordingUrl   String?
+  
+  // Location/Meeting
+  location       String? // Dynamic field, might mean "Zoom" or "Building Name"
+  address        String? // Physical address for onsite/hybrid
+  mapUrl         String? // Link to Google Maps
+  meetingUrl     String? // Link to join meeting (Zoom/Teams)
+  
+  // Relations
+  photos   EventPhoto[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([date])
+  @@index([status])
+  @@index([deliveryMethod])
+}
+
+// Photo gallery for get-together events
+model EventPhoto {
+  id       String  @id @default(cuid())
+  eventId  String
+  imageUrl String
+  caption  String?
+  order    Int     @default(0)
+  
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  
+  @@index([eventId])
+}
+
+// News/announcements
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  excerpt     String?
+  imageUrl    String?
+  publishDate DateTime @default(now())
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([publishDate])
+}
+
+// Podcast / video episodes (YouTube, Vimeo, ...)
+model Podcast {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  videoUrl    String
+  publishDate DateTime @default(now())
+  isHidden    Boolean  @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([publishDate])
+}
+
+// NextAuth.js Models & Expanded User
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?   // For Credentials provider
+  
+  // App Specific Fields
+  role          String    @default("ADMIN") // Only ADMIN in template
+  
+  accounts      Account[]
+  sessions      Session[]
+  announcements Announcement[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Reusable announcement banner
+model Announcement {
+  id              String   @id @default(cuid())
+  title           String
+  description     String?
+  linkUrl         String?
+  linkText        String?
+  isActive        Boolean  @default(false)
+  type            String   @default("info") // info, warning, success, event
+  displayStartDate DateTime?
+  displayEndDate   DateTime?
+  
+  createdBy       String?
+  user            User?    @relation(fields: [createdBy], references: [id], onDelete: SetNull)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([isActive])
+}
+
+// Site settings for theme management
+model SiteSetting {
+  key   String @id // e.g., 'theme'
+  value String // JSON string containing theme configuration
+  
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Site icon">
+  <!-- Placeholder icon for the template — replace this file with your own mark.
+       The background colour matches theme.json -> colors.primary. Kept to a few
+       bold shapes so it still reads at 16px in a browser tab. -->
+  <rect width="64" height="64" rx="14" fill="#042c5c"/>
+  <!-- Calendar: the thing every community site is built around -->
+  <rect x="13" y="17" width="38" height="34" rx="6" fill="#ffffff"/>
+  <rect x="13" y="17" width="38" height="11" rx="6" fill="#ffffff"/>
+  <rect x="13" y="26" width="38" height="4" fill="#042c5c" fill-opacity="0.9"/>
+  <rect x="21" y="10" width="5" height="12" rx="2.5" fill="#ffffff"/>
+  <rect x="38" y="10" width="5" height="12" rx="2.5" fill="#ffffff"/>
+  <circle cx="32" cy="40" r="6" fill="#042c5c"/>
+</svg>

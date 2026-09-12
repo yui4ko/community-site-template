@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      # Named volumes so a rebuild never wipes the database or the uploads
+      - db_data:/app/prisma/data
+      - uploads:/app/public/uploads
+    environment:
+      - DATABASE_URL=file:/app/prisma/data/dev.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-your_super_secret_key_change_me}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@example.com}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme123}
+      - UPLOAD_DIR=/app/public/uploads
+      - HOST=0.0.0.0
+    restart: unless-stopped
+    # Health check
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  db_data:
+  uploads:

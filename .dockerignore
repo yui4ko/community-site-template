@@ -1,0 +1,34 @@
+# Dependencies (installed fresh inside Docker)
+node_modules
+npm-debug.log*
+
+# Build output
+.next
+out
+build
+
+# Database files
+prisma/*.db
+prisma/*.db-journal
+data/
+
+# Environment (secrets should not be baked into the image)
+.env
+.env*.local
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+README.md

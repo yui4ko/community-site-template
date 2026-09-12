@@ -1,0 +1,44 @@
+{
+  "siteName": "My Organization",
+  "siteTagline": "Advancing Excellence Together",
+  "siteDescription": "Uniting professionals to advance industry standards through events, education, and community.",
+  "siteUrl": "https://www.example.com",
+  "contactEmail": "admin@example.com",
+  "logoUrl": "",
+  "hero": {
+    "badge": "Advancing Quality Together",
+    "title": "Advancing Excellence \\n Across The Region",
+    "subtitle": "Uniting quality professionals to advance industry standards through connection, education, and community.",
+    "primaryLinkText": "Explore Events",
+    "primaryLinkUrl": "/events",
+    "secondaryLinkText": "Learn More",
+    "secondaryLinkUrl": "https://www.example.com"
+  },
+  "footer": {
+    "description": "Advancing excellence in our community. We unite professionals to advance industry standards through events, education, and community.",
+    "copyrightName": "My Organization",
+    "externalLinks": [
+      { "label": "Partner Website", "url": "https://www.example.com" }
+    ]
+  },
+  "seo": {
+    "keywords": ["Quality", "Professionals", "Events", "Education", "Community"]
+  },
+  "calendar": {
+    "categories": ["Professional Development"],
+    "organizerName": "My Organization",
+    "icsFilename": "events.ics"
+  },
+  "social": {
+    "hashtag": "#MyOrganization"
+  },
+  "admin": {
+    "sidebarTitle": "Admin",
+    "podcastLabel": "Podcasts"
+  },
+  "colors": {
+    "primary": "#042c5c",
+    "secondary": "#28a745",
+    "dark": "#1e293b"
+  }
+}
