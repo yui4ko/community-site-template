@@ -5,7 +5,7 @@ export default function NewPodcastPage() {
     return (
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 max-w-2xl mx-auto">
             <div className="mb-8">
-                <Link href="/admin/podcasts" className="text-blue-600 hover:text-blue-800 text-sm font-medium mb-4 inline-block flex items-center gap-1">
+                <Link href="/admin/podcasts" className="text-brand hover:text-brand-light text-sm font-medium mb-4 inline-block flex items-center gap-1">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
@@ -26,7 +26,7 @@ export default function NewPodcastPage() {
                         id="title"
                         required
                         placeholder="e.g. FDA Guidelines on Food Safety"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all"
                     />
                 </div>
 
@@ -40,7 +40,7 @@ export default function NewPodcastPage() {
                         id="videoUrl"
                         required
                         placeholder="e.g. https://www.youtube.com/watch?v=..."
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all"
                     />
                     <p className="text-xs text-gray-500 mt-1">Paste the full YouTube link here. We will extract the video automatically.</p>
                 </div>
@@ -54,7 +54,7 @@ export default function NewPodcastPage() {
                         id="description"
                         rows={4}
                         placeholder="Brief summary of the podcast content..."
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all"
                     ></textarea>
                 </div>
 
@@ -67,7 +67,7 @@ export default function NewPodcastPage() {
                     </Link>
                     <button
                         type="submit"
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors font-medium"
+                        className="bg-brand hover:bg-brand-light text-white px-6 py-2 rounded-lg transition-colors font-medium"
                     >
                         Save Podcast
                     </button>

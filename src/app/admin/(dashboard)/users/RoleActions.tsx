@@ -34,7 +34,7 @@ export default function RoleActions({ user }: Props) {
                 value={user.role}
                 onChange={(e) => handleRoleChange(e.target.value)}
                 disabled={isUpdating}
-                className="bg-white/5 border border-white/10 rounded-lg px-2 py-1.5 text-xs text-gray-300 outline-none focus:ring-1 focus:ring-brand cursor-pointer transition-all disabled:opacity-50"
+                className="bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-brand focus:border-transparent cursor-pointer transition-all disabled:opacity-50"
             >
                 <option value="MEMBER">Member</option>
                 <option value="SPEAKER">Speaker</option>

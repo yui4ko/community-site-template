@@ -47,13 +47,13 @@ export default async function AdminDashboard() {
             <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="p-8 border-b border-gray-50 flex justify-between items-center">
                     <h2 className="text-xl font-bold text-slate-800">Upcoming Events</h2>
-                    <Link href="/admin/events" className="text-blue-500 hover:text-blue-600 font-semibold text-sm">View All</Link>
+                    <Link href="/admin/events" className="text-brand hover:text-brand-light font-semibold text-sm">View All</Link>
                 </div>
                 <div className="divide-y divide-gray-50">
                     {upcomingEvents.map(event => (
                         <div key={event.id} className="p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
+                                <div className="w-12 h-12 rounded-xl bg-brand/5 text-brand flex items-center justify-center font-bold text-sm">
                                     {format(new Date(event.date), "dd")}
                                 </div>
                                 <div>
@@ -72,7 +72,7 @@ export default async function AdminDashboard() {
                         </div>
                     ))}
                     {upcomingEvents.length === 0 && (
-                        <div className="p-12 text-center text-gray-400">
+                        <div className="p-12 text-center text-gray-500">
                             No upcoming events found. Create one to get started!
                         </div>
                     )}

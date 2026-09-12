@@ -19,7 +19,7 @@ function SubmitButton({ isEdit }: { isEdit: boolean }) {
         <button
             type="submit"
             disabled={pending}
-            className="flex-1 bg-brand text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50"
+            className="flex-1 bg-brand text-white font-bold py-3 rounded-xl hover:bg-brand-light transition-colors disabled:opacity-50"
         >
             {pending ? 'Saving...' : (isEdit ? 'Update Event' : 'Create Event')}
         </button>
@@ -162,7 +162,7 @@ export default function EventForm({ action, initialData }: { action: (state: Act
                         />
                         <label htmlFor="showInList" className="text-sm font-bold text-gray-700 cursor-pointer select-none">
                             Show in Upcoming List?
-                            <p className="text-xs text-gray-400 font-normal">Uncheck to keep in Calendar/ICS only (hidden from card list).</p>
+                            <p className="text-xs text-gray-500 font-normal">Uncheck to keep in Calendar/ICS only (hidden from card list).</p>
                         </label>
                     </div>
 
@@ -264,7 +264,7 @@ export default function EventForm({ action, initialData }: { action: (state: Act
 
                     <div className="pt-6 border-t border-gray-100">
                         <label className="block text-sm font-bold text-gray-700 mb-2">Event Photo Gallery (Add Photos)</label>
-                        <p className="text-[10px] text-gray-400 mb-2 italic">Images for the past event highlights wall.</p>
+                        <p className="text-[10px] text-gray-500 mb-2 italic">Images for the past event highlights wall.</p>
                         <div className="flex gap-2 mb-4">
                             <UploadButton label="Add Photo to Gallery" onUploadComplete={addPhoto} multiple={true} />
                         </div>

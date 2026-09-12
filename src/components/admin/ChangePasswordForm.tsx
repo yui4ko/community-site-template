@@ -11,7 +11,7 @@ function SubmitButton() {
         <button
             type="submit"
             disabled={pending}
-            className="w-full bg-brand text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50"
+            className="w-full bg-brand text-white font-bold py-3 rounded-xl hover:bg-brand-light transition-colors disabled:opacity-50"
         >
             {pending ? 'Updating...' : 'Change Password'}
         </button>

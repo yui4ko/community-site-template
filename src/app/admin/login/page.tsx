@@ -11,7 +11,7 @@ function SubmitButton() {
         <button
             type="submit"
             disabled={pending}
-            className="w-full bg-brand text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-brand text-white font-bold py-3 rounded-xl hover:bg-brand-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
             {pending ? 'Signing in...' : 'Sign In'}
         </button>
@@ -51,7 +51,7 @@ export default function LoginPage() {
                             id="email"
                             name="email"
                             required
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all"
                             placeholder="admin@example.com"
                         />
                     </div>
@@ -65,7 +65,7 @@ export default function LoginPage() {
                             id="password"
                             name="password"
                             required
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all"
                             placeholder="••••••••"
                         />
                     </div>

@@ -56,7 +56,7 @@ export default function ThemeSettings() {
                 <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl transition-colors disabled:opacity-50"
+                    className="bg-brand hover:bg-brand-light text-white font-bold py-2 px-6 rounded-xl transition-colors disabled:opacity-50"
                 >
                     {saving ? 'Saving...' : 'Save Changes'}
                 </button>

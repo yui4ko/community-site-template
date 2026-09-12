@@ -17,7 +17,7 @@ export default async function AdminEventsPage() {
                 <h1 className="text-3xl font-bold text-gray-900">Events Management</h1>
                 <Link
                     href="/admin/events/new"
-                    className="bg-brand hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-blue-500/20"
+                    className="bg-brand hover:bg-brand-light text-white px-6 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-blue-500/20"
                 >
                     + Create Event
                 </Link>
@@ -53,7 +53,7 @@ export default async function AdminEventsPage() {
                                     <td className="px-6 py-4 text-right space-x-2">
                                         <Link
                                             href={`/admin/events/${event.id}`}
-                                            className="inline-block text-blue-600 hover:text-blue-800 font-bold text-sm px-3 py-1 rounded-lg hover:bg-blue-50 transition-colors"
+                                            className="inline-block text-brand hover:text-brand-light font-bold text-sm px-3 py-1 rounded-lg hover:bg-brand/5 transition-colors"
                                         >
                                             Edit
                                         </Link>
@@ -63,7 +63,7 @@ export default async function AdminEventsPage() {
                             ))}
                             {events.length === 0 && (
                                 <tr>
-                                    <td colSpan={4} className="px-6 py-12 text-center text-gray-400">
+                                    <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
                                         No events found.
                                     </td>
                                 </tr>
